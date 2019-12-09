@@ -11,3 +11,12 @@ class ARContentsSerializer(serializers.ModelSerializer):
 			'image',
 			'marker',
 		]
+
+
+class ARMarkersSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = ARContents
+		fields = [
+			'marker',
+		]
