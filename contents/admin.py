@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import ARContents
+
+
+@admin.register(ARContents)
+class ARContentsAdmin(admin.ModelAdmin):
+	list_display = ['id', 'image', 'marker', 'description']

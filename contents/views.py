@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework.generics import RetrieveAPIView
 
-# Create your views here.
+from .models import ARContents
+from .serializers import ARContentsSerializer
+
+
+class DownloadView(RetrieveAPIView):
+	serializer_class = ARContentsSerializer
+	queryset = ARContents.objects.all()
+	lookup_field = 'marker'
