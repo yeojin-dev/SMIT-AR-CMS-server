@@ -3,8 +3,10 @@ from django_extensions.db.models import TimeStampedModel
 
 
 class ARContents(TimeStampedModel):
-	image = models.ImageField()
-	marker = models.CharField(max_length=30, unique=True, db_index=True)
+	image_contents = models.ImageField(upload_to='contents')
+	image_target = models.ImageField(upload_to='targets', help_text='JPG 파일만 사용해주세요.')
+	target_id = models.CharField(max_length=255, blank=True)
+	name = models.CharField(max_length=64)
 	description = models.CharField(max_length=255, blank=True, null=True)
 
 	class Meta:
@@ -12,4 +14,4 @@ class ARContents(TimeStampedModel):
 		verbose_name = 'AR Content'
 
 	def __str__(self):
-		return self.image.name
+		return self.image_contents.name
