@@ -17,4 +17,4 @@ class MarkerListView(generics.GenericAPIView):
 class DownloadView(generics.RetrieveAPIView):
 	serializer_class = ARContentsSerializer
 	queryset = ARContents.objects.all()
-	lookup_field = 'marker'
+	lookup_field = 'name'

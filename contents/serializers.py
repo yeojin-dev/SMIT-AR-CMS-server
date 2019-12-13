@@ -8,8 +8,8 @@ class ARContentsSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ARContents
 		fields = [
-			'image',
-			'marker',
+			'image_contents',
+			'name',
 		]
 
 
@@ -18,5 +18,5 @@ class ARMarkersSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ARContents
 		fields = [
-			'marker',
+			'name',
 		]
