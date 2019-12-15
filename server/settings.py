@@ -12,6 +12,22 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+from django.core.exceptions import ImproperlyConfigured
+from dotenv import find_dotenv, load_dotenv
+
+load_dotenv(find_dotenv(), encoding='utf-8')
+
+# secrets
+try:
+    VWS_SERVER_ACCESS_KEY = os.environ['VWS_SERVER_ACCESS_KEY']
+    VWS_SERVER_SECRET_KEY = os.environ['VWS_SERVER_SECRET_KEY']
+    VWS_CLIENT_ACCESS_KEY = os.environ['VWS_CLIENT_ACCESS_KEY']
+    VWS_CLIENT_SECRET_KEY = os.environ['VWS_CLIENT_SECRET_KEY']
+    ALLOWED_HOST = os.environ['ALLOWED_HOST']
+except Exception as e:
+    raise ImproperlyConfigured(f'환경 변수 읽기 실패 - {e}')
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +41,7 @@ SECRET_KEY = '2wlxtv0c*g8&%au3o)iouo%ne7bfu$!q84p68qj@!u1bydh93='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']  # only local environment
+ALLOWED_HOSTS = ['127.0.0.1', ALLOWED_HOST]
 
 
 # Application definition
